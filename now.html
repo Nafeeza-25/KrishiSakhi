@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>💡 ＴＥＣＨＢＬＯＯＭ 🌱 </title>
+  <style>
+    :root{--accent:#2b8a3e;--card:#ffffffee}
+    *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+   
+    body {
+      margin: 0;
+      background: url('new2.jpg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .card {
+      background: var(card);
+      max-width: 720px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(12,20,10,0.3);
+      padding: 28px;
+    }
+
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    header h1{margin:0;font-size:20px;color:var(--accent)}
+    .lang-switch button{margin-left:8px;padding:6px 10px;border-radius:8px;border:1px solid #dcdcdc;background:#fff;cursor:pointer}
+    .lang-switch button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .full{grid-column:1/-1}
+    label{display:block;font-size:13px;margin-bottom:6px;color:#333}
+    .input-group{display:flex;align-items:center;gap:6px}
+    input[type=text], input[type=tel], select{flex:1;padding:10px;border-radius:8px;border:1px solid #ccc;font-size:14px}
+    .mic-btn{padding:8px 10px;border-radius:50%;border:none;background:#eee;cursor:pointer}
+    .mic-btn.active{background:var(--accent);color:#fff}
+    .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+    button.primary{background:var(--accent);color:#fff;border:0;padding:10px 16px;border-radius:8px;cursor:pointer}
+    button.ghost{background:#fff;border:1px solid #bbb;padding:10px 14px;border-radius:8px;cursor:pointer}
+    .note{font-size:13px;color:#444;margin-top:8px}
+    @media (max-width:600px){
+      body{padding:12px;}
+      form{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <header>
+      <h1 id="title">Agriculture Login</h1>
+      <div class="lang-switch" role="tablist" aria-label="Language switch">
+        <button id="btn-en" class="active" type="button" data-lang="en">EN</button>
+        <button id="btn-ml" type="button" data-lang="ml">മലയാളം</button>
+      </div>
+    </header>
+
+    <form id="farmForm" autocomplete="on">
+      <div>
+        <label for="farmerName" id="labelName">Farmer Name</label>
+        <div class="input-group">
+          <input type="text" id="farmerName" name="farmerName" placeholder="e.g. K. Ram" required />
+          <button type="button" class="mic-btn" data-target="farmerName">🎤</button>
+        </div>
+      </div>
+
+      <!-- Phone number added -->
+      <div>
+        <label for="phone" id="labelPhone">Phone Number</label>
+        <div class="input-group">
+          <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210" required pattern="[0-9]{10}" />
+          <button type="button" class="mic-btn" data-target="phone">🎤</button>
+        </div>
+      </div>
+
+      <div>
+        <label for="state" id="labelState">State</label>
+        <input type="text" id="state" name="state" value="Kerala" readonly />
+      </div>
+
+      <div>
+        <label for="district" id="labelDistrict">District</label>
+        <div class="input-group">
+          <select id="district" name="district" required>
+            <option value="">-- Select District --</option>
+            <option>Thiruvananthapuram</option>
+            <option>Kollam</option>
+            <option>Pathanamthitta</option>
+            <option>Alappuzha</option>
+            <option>Kottayam</option>
+            <option>Idukki</option>
+            <option>Ernakulam</option>
+            <option>Thrissur</option>
+            <option>Palakkad</option>
+            <option>Malappuram</option>
+            <option>Kozhikode</option>
+            <option>Wayanad</option>
+            <option>Kannur</option>
+            <option>Kasaragod</option>
+          </select>
+          <button type="button" class="mic-btn" data-target="district">🎤</button>
+        </div>
+      </div>
+
+      <div>
+        <label for="village" id="labelVillage">Village</label>
+        <div class="input-group">
+          <select id="village" name="village" required>
+            <option value="">-- Select Village --</option>
+            <option>Chavakkad</option>
+            <option>Vatakara</option>
+            <option>Perambra</option>
+            <option>Mananthavady</option>
+            <option>Munnar</option>
+            <option>Aluva</option>
+            <option>Kodungallur</option>
+            <option>Perumbavoor</option>
+          </select>
+          <button type="button" class="mic-btn" data-target="village">🎤</button>
+        </div>
+      </div>
+
+      <div class="full">
+        <label for="landType" id="labelLand">Type of land</label>
+        <div class="input-group">
+          <select id="landType" name="landType" required>
+            <option value="">-- Select --</option>
+            <option value="sandy">Sandy (മണൽ മണ്ണ്)</option>
+            <option value="clay">Clay (ക്ലേ മണ്ണ്)</option>
+            <option value="loamy">Loamy (ലോമി മണ്ണ്)</option>
+            <option value="alluvial">Alluvial (ഘന മണ്ണ്)</option>
+            <option value="rocky">Rocky (പാറ മണ്ണ്)</option>
+          </select>
+          <!-- mic added -->
+          <button type="button" class="mic-btn" data-target="landType">🎤</button>
+        </div>
+      </div>
+
+      <div class="full actions">
+        <button type="button" class="ghost" id="clearBtn">Clear</button>
+        <button type="submit" class="primary" id="submitBtn">Login</button>
+      </div>
+
+      <p class="full note" id="note">We will use this information to personalise farming tips. No data leaves your browser in this demo.</p>
+    </form>
+  </div>
+
+  <script>
+    // ---- Translations ----
+    const translations = {
+      en: {
+        title: 'Krishi Sakhi',
+        labelName: 'Farmer Name',
+        labelPhone: 'Phone Number',
+        labelState: 'State',
+        labelDistrict: 'District',
+        labelVillage: 'Village',
+        labelLand: 'Type of land',
+        submit: 'Login',
+        clear: 'Clear',
+        note: 'We will use this information to personalise farming tips. No data leaves your browser in this demo.',
+        placeholders: { farmerName: 'e.g. D.jana', phone: 'e.g. 9876543210' },
+        summaryTitle: 'Saved details:'
+      },
+      ml: {
+        title: 'കൃഷി ലോഗിൻ',
+        labelName: 'കർഷകന്റെ പേര്',
+        labelPhone: 'ഫോൺ നമ്പർ',
+        labelState: 'സംസ്ഥാനം',
+        labelDistrict: 'ജില്ല',
+        labelVillage: 'ഗ്രാമം',
+        labelLand: 'ഭൂമിയുടെ തരം',
+        submit: 'ലോഗിൻ',
+        clear: 'സഫാക്തം',
+        note: 'ഈ വിവരങ്ങൾ കൃഷി ഉപദേഷ്ടാക്കളെ വ്യക്തിഗതമാക്കാൻ ഉപയോഗിക്കും. ഈ ഡെമോയിൽ ഡാറ്റ് ബ്രൗസറിന് പുറത്തേക്ക് പോകാറില്ല.',
+        placeholders: { farmerName: 'ഉദാ: കെ. രാം', phone: 'ഉദാ: 9876543210' },
+        summaryTitle: 'സംരക്ഷിച്ച വിശദാംശങ്ങൾ:'
+      }
+    };
+
+    // ---- Language Switch ----
+    const btnEn = document.getElementById('btn-en');
+    const btnMl = document.getElementById('btn-ml');
+    const langButtons = [btnEn, btnMl];
+    const form = document.getElementById('farmForm');
+    const clearBtn = document.getElementById('clearBtn');
+
+    const elems = {
+      title: document.getElementById('title'),
+      labelName: document.getElementById('labelName'),
+      labelPhone: document.getElementById('labelPhone'),
+      labelState: document.getElementById('labelState'),
+      labelDistrict: document.getElementById('labelDistrict'),
+      labelVillage: document.getElementById('labelVillage'),
+      labelLand: document.getElementById('labelLand'),
+      submitBtn: document.getElementById('submitBtn'),
+      clearBtn: document.getElementById('clearBtn'),
+      note: document.getElementById('note'),
+      farmerName: document.getElementById('farmerName'),
+      phone: document.getElementById('phone'),
+      district: document.getElementById('district'),
+      village: document.getElementById('village'),
+      landType: document.getElementById('landType')
+    };
+
+    function applyLang(lang){
+      const t = translations[lang] || translations.en;
+      elems.title.innerText = t.title;
+      elems.labelName.innerText = t.labelName;
+      elems.labelPhone.innerText = t.labelPhone;
+      elems.labelState.innerText = t.labelState;
+      elems.labelDistrict.innerText = t.labelDistrict;
+      elems.labelVillage.innerText = t.labelVillage;
+      elems.labelLand.innerText = t.labelLand;
+      elems.submitBtn.innerText = t.submit;
+      elems.clearBtn.innerText = t.clear;
+      elems.note.innerText = t.note;
+      elems.farmerName.placeholder = t.placeholders.farmerName;
+      elems.phone.placeholder = t.placeholders.phone;
+      langButtons.forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+      localStorage.setItem('agri_lang', lang);
+    }
+
+    const savedLang = localStorage.getItem('agri_lang') || (navigator.language && navigator.language.startsWith('ml')? 'ml' : 'en');
+    applyLang(savedLang);
+
+    btnEn.addEventListener('click', ()=>applyLang('en'));
+    btnMl.addEventListener('click', ()=>applyLang('ml'));
+
+    clearBtn.addEventListener('click', ()=>{ form.reset(); });
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const lang = localStorage.getItem('agri_lang') || 'en';
+      const t = translations[lang];
+
+      const data = {
+        farmerName: elems.farmerName.value.trim(),
+        phone: elems.phone.value.trim(),
+        district: elems.district.value,
+        village: elems.village.value,
+        landType: elems.landType.value
+      };
+
+      if(!data.farmerName || !data.phone || !data.district || !data.village || !data.landType){
+        alert(lang==='ml' ? 'ദയവായി എല്ലാ ഫീൽഡുകളും പൂരിപ്പിക്കുക.' : 'Please fill all fields.');
+        return;
+      }
+
+      localStorage.setItem('agri_profile', JSON.stringify(data));
+      const landText = document.querySelector('#landType option:checked').textContent;
+      const summary = `${t.summaryTitle}\n\n${t.labelName}: ${data.farmerName}\n${t.labelPhone}: ${data.phone}\n${t.labelDistrict}: ${data.district}\n${t.labelVillage}: ${data.village}\n${t.labelLand}: ${landText}`;
+      alert(summary);
+    });
+
+    window.addEventListener('load', ()=>{
+      const saved = localStorage.getItem('agri_profile');
+      if(saved){
+        try{
+          const p = JSON.parse(saved);
+          if(p.farmerName) elems.farmerName.value = p.farmerName;
+          if(p.phone) elems.phone.value = p.phone;
+          if(p.district) elems.district.value = p.district;
+          if(p.village) elems.village.value = p.village;
+          if(p.landType) elems.landType.value = p.landType;
+        }catch(e){}
+      }
+    });
+
+    // ---- Speech Recognition ----
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition;
+
+    if(SpeechRecognition){
+      recognition = new SpeechRecognition();
+      recognition.lang = 'ml-IN'; // Malayalam
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      document.querySelectorAll('.mic-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const targetId = btn.dataset.target;
+          const inputEl = document.getElementById(targetId);
+
+          btn.classList.add('active');
+          recognition.start();
+
+          recognition.onresult = (event)=>{
+            const speechText = event.results[0][0].transcript;
+            if(inputEl.tagName === 'INPUT'){
+              inputEl.value = speechText;
+            } else if(inputEl.tagName === 'SELECT'){
+              const options = Array.from(inputEl.options);
+              const match = options.find(o=>speechText.includes(o.text));
+              if(match) inputEl.value = match.value;
+            }
+          };
+
+          recognition.onend = ()=> btn.classList.remove('active');
+        });
+      });
+    } else {
+      alert("Speech recognition not supported in this browser.");
+    }
+  </script>
+</body>
+</html>
